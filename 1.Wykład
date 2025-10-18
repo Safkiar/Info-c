@@ -1,0 +1,273 @@
+Informatyka - dyscyplina naukowa zajmująca się przetwarzaniem informacji z użyciem komputerów.
+
+Specyfikacja współczesnego komputera została opracowana na początku lat 80-tych w firmie IBM.
+
+Programowalność - możliwość wykonywania dowolnego oprogramowania.
+
+System komputerowyw - sprzęt komputerowy współdziałający z oprogramowaniem
+- sprzęt, oprogramowanie, użytkownicy
+
+System informatyczny - zbiór elementów, które przetwarzają dane przy użyciu aperu i oprogramowanie
+- sprzęt (komputer), oprogramowanie, informacje (dane)
+- ludzi, organizację
+- procedury organizacyjne 
+
+Oprogramowanie:
+1 - kod źródłowy zapisany w języku programowania 
+2 - produkt do sprzedaży w pudełku
+3 - program działający na komputerze 
+
+Program komputerowy - ciąg instrukcji (poleceń) dla procesora realizujący określone zadanie według pewnego algorytmu (sposobu).
+
+Proces systemu operacyjnego (process) - program, który jest uruchomiony. Executing / Running program. 
+
+kod źródłowy (source code)
+kod skompilowany (binary code, machine code, object code)
+kod bezpośredni (byte code)
+
+desktop program
+web application
+mobile app 
+
+Przedział czasu, gdy program esy wykonywany (run-time)
+
+1936 - maszyna Turinga - koncepcja współczesnego komputera 
+ABC - rozwiązywanie układów równań algebraicznych liniowych 
+
+---------------------------------------------
+ARCHITEKTURA KOMPUTERA 
+---------------------------------------------
+
+Komputer działa w systemie liczbowym o podstawie 2 - system binarny 
+
+Poziom napięć (poziomy logiczne)
+0 (0v)
+1 (napięcie zasilania układu)
+
+Bit - najmniejsza jednostka informacyjna 
+
+Bit jest dwustanowy (stan 0, stan 1)
+
+Bajt (8 bitów):
+00000000b - najmniejsza wartość
+11111111b - największa wartość
+
+Każda liczba dziesiętna musi być tłumaczona na bieżąco na system dwójkowy.
+Za konwersje liczb odpowiada: System operacyjny 
+(
+0 0 0 1 0 1 1 0 = 22
+Od ostatniej: (0*1)+(1*2)+(1*4)+(0*8)+(1*16)+(0*32)+(0*64)=22
+
+single, signle precision - pojedyncza precyzja:
+(float)
+c - 8 bitów
+m - 23 bitów
+
+(double)
+c - 11 bitów 
+m - 52 bity 
+
+------------------------------------------------
+
+Neumann 1945:
+Pamięć zawiera razem:
+- instrukcje programu
+- Dane programu 
+
+Harvard proponował oddzielnie dane i instrukcje 
+
+--- Procesor -----------------------------------
+
+Procesor (CPU - central processing unit)
+- urządzenie cyfrowe sekwencyjne potrafiące pobierać dane z pamięci, interpretować je i wykonywać jako rozkazy 
+- wykonuje jak najszybciej ciągi prostych operacji (rozkazów) należących do zbioru operacji podstawowych (lista od producenta)
+
+Zestaw instrukcji (rozkazów) jest listą wszystkich instrukcji, które procesor potrafi wykonywać.
+
+Arytmetyczne (add), Logiczne i przesunięcia (and), operujące na danych (input, pop), sterujące przepływem danych (loop)
+
+Cykl procesora:
+1. Fetch
+2. Decode
+3. Execute
+4. Writeback 
+
+1. Pobieranie instrukcji zgodnie z licznikiem (program coutner)
+2. Dekodowanie
+3. Wykonywanie 
+4. Zapisanie wyników 
+
+---------------------------------------------
+TECHNIKA PROGRAMOWANIA
+---------------------------------------------
+
+Paradygmat programowania - powszechny wzorzec programowania definujący sposób budowania programu oraz jego wykonania przez komputer 
+
+Języki programowania są związane z różnymi paradygmatami programowania 
+
+Programowanie:
+- Strukturalne
+- Proceduralne
+- Funkcyjne
+- Imperatywne 
+- Obiektowe 
+- Uogólnione (generyczne)
+- Sterowane zdarzeniami
+- Logiczne 
+- Aspektowe
+- Deklaratywne
+- Agentowe 
+- Modularne
+
+Programowanie
+|--- Deklaratywne 
+|   |--- Funkcyjne 
+|   |--- Logiczne 
+|--- Imperatywne 
+    | --- Strukturalne 
+    | --- Obiektowe 
+    | --- Równoległe 
+    | --- Zdarzeniowe
+    | --- Aspektowe 
+    | --- Modularne 
+
+--- Imperatywne -----------------------------
+
+Progarmowanie imperatywne - ciąg rozkazów do wykonania przez procesor, zmieniających zawartość pamięci komputera (stan). Podstawowe typy instrukcji to:
+- sekwencji 
+- wyboru 
+- powtórzenia (pętle)
+
+Programowanie strukturalne - podział problemu, programu na mniejsze części, moduły, bloki. Ułożone hierarchicznie od ogółu do szczegółu, z wykorzystywaniem struktur kontrolnych w postaci instrukcji wyboru i pętli.
+
+Język: C
+Moduły, jednostki, wewnątrz znajdują się funkcje, procedury.
+
+Funkcja: Jeśli procedura zwraca wynik, nazywana jest procedurą funkcyją.
+
+Procedura ma jedno wejścia i jedno wyjście, a wewnątrz zestaw instrukcji wykonywanych w sekwencji, według wyboru oraz w pętli.
+
+
+Programowanie obiektowe - programy definiuje się za pomocą klas, na podstawie których buduje się obiekty.
+
+
+Ewolucja technik programowania
+Fortran - Algol - C - C++ - C#
+
+
+---------------------------------------------
+Języki programowania 
+---------------------------------------------
+
+Język programowania - narzędzie umożliwiający zapis programu w postaci zrozumiałej dla człowieka, przetwarzany dla komputera (maszyny algorytymicznej)
+
+kod źródłowy programu (język programowania)
+kod wynikowy programu (język maszynowy)
+
+Program:
+postać źródłowa: obrabiana przez programistę
+postać binarna: wykonywana przez komputer 
+postać skryptowa: dla interpretorów kodu 
+postać bajtowa: dla maszyn wirtualnych
+
+
+Język pierwszej generacji - instrukcje zapisywane w postaci liczb binarnych.
+- języki maszynowe (procesorów)
+
+Język drugiej generacji - języki symboliczne, asemblery niskiego poziomu, używane z mnemonikami: jmp ffff:0
+
+Język trzeciej generacji- języki wysokiego poziomu, proceduralne (imperatywne) - jedna instrukcja jest tłumaczona na kilka instrukcji procesora 5 - 10
+
+Język czwartej generacji - nieproceduralne, deklaratywne (SQL)
+
+Język piątej generacji - języki sztucznej inteligencji systemów ekspertowych 
+
+
+prompt - polecenia dla modeli językowych są deklaratywne, ale nie mają formalnej semiotyki, są niedeterministyczne 
+
+--- Budowanie programu ----------------------
+
+Budowanie programu 
+- (kod źródłowy) zakodowanie programu w niezależnym od procesora języku
+- (kod asemblera) kompilacja translacja kodu źródłowego
+- (kod binarny) kompilacja ko kodu binarnego
+- (kod wykonywalny) Linkowanie do kodu wykonywalnego bibiolek, modułów.
+- Uruchomienie - wpyowadzenie kodu wykonywalnego do pamięci operacyjnej komputera, kod dynamicznie dołączanych elementów 
+Loader - w miejsce nazw tekstowych w programie wstawia przydzielone adresy w pamięci, przekazanie sterowania do pierwszej instrukcji programu 
+
+Nie można uruchomić kodu binarnego - brak formatu, punktu startowego. Nie da się tego uruchomić.
+Nie można uruchomić kodu wykonywalnego - brak loadera systemu, dynamicznego linkowania 
+
+
+
+
+Etap kodowania > 
+
+--- Programista - edytor kodu - kod źródłowy 
+
+Etap budowania >
+
+--- Kompilator - program do kompilacji - kod asemblera 
+--- Linker - program do linkowania - kod maszynowy 
+
+Etap uruchomienia >
+
+--- loader - loader - kod maszynowi z w pamięci z dołączynmi dynamicznie kodami zewnętrznych funkcji 
+
+Translacja kodu źródłowego do języka niższego poziomu. 
+Komplliacja kodu asemblera do kodu wykonywalnego i linkowanie z bibliotekami zgodnymi z OS i CPU. 
+wada:  zgodność sprzętu z kompilatorem, linkerem. 
+
+
+--- Wirtualne maszyny -----------------------
+
+1. Brak translacji do asemblera 
+2. Kompilacja kodu źródłowego do kodu pośredniego rozumianą przez VM
+3. Kod wykonywalny buduje VM z kodu pośredniego 
+wada: opóźnienie przez czas kompilacji 
+języki: Java, C# 
+
+
+
+Java: 
+kod źródłowy > kompilator java > kod pośredni > Java VM > OS 
+
+C/C++
+kod źródłowy > kompilator C pod OS > kod maszynowy > OS 
+
+
+--- Interpretery -----------------------------
+
+1. Brak translacji do asemblera 
+2. translacja z kodu źródłowego do bytecode, do rozkazu wykonywalnego i uruchomienie Just-In-Time 
+wada: opóźnienie przez bieżącą kompilacje 
+języki: JavaScript 
+
+kompilator produkucje instrukcje, nie wykonuje ich
+interpreter nie produkuje kodu docelowego ani pośredniego, na biężąco tłumaczy i wykonuje instrukcje programu jedna po drugiej 
+
+ByteCode - zewstaw instrukcji dla wirtualnej maszyny, nie dla CPU. Ten sam plik działa na różnych CPU. 
+JIT (Just-In-Time) - kompilator działający w runtime.
+
+
+--- Podsumowanie -----------------------------
+
+Instrukcje procesora są najszybsze w wykonaniu, ale diała tylko na docelowej architekturze/OS 
+
+ByteCode na VM działa na wielu maszynach, jeśli jest zainstalowana odpowiednia VM. Ale wymaga VM na danej maszynie, trochę wolniejsze i rozrzut pamięci.
+
+Interpreter - kod działa na wielu systemach o ile jest interpreter. Brak kroku kompilacji przed uruchomieniem. Zwykle najwolniejszy w wykonaniu. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

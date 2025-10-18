@@ -1,0 +1,107 @@
+Struktura programu w języku C. 
+Jednostki leksykalne.
+Typy danych.
+Instrukcje języka C. 
+
+1969 - Pierwsza wersja systemu UNIX na maszynę
+1970 - język B 
+1972 - język C 
+1979 - C++ 
+2001 - C#
+
+Programowanie Procedrlane 
+Programowanie Strukturalne 
+
+Realizuje programowanie Imperatywne poprzeze instrukcje sterujące 
+Kompilowany do kodu maszynowego na wybraną architekturę sprzętowo-operacyjną (proc, OS, pamięć)
+
+<assert.h>  makro assert błędy logiczne i debug programu 
+<complex.h> manipulowanie liczbami zespolonymi
+<ctype.h>  funkcje do klasyfikowaniu znaków według typów i konwersji
+<errno.h> testowanie kodów błędów zgłaszanych przez funkcje biblioteczne
+<fenv.h> kontrolowanie środowiska zmiennoprzecinkowego
+<float.h>  stałe mmakro liczb zmiennoprzecinkowych
+<inttypes.h>  typy całkowite o dokładniej szerokości
+<iso646.h> kilka makr, które implementują alternatywne sposoby wyrażania standardowych tokenów
+<limits.h> stałe makro dla liczb całkowitych 
+<locale.h>  funkcje lokalizacji
+<math.h> funkcje matematyczne
+<setjmp.h> wyjścia nielokalne dla set i jmp 
+<signal.h>  funkcja obłusgi sygnałów
+<stdalign.h> zapytania i określania wyrónania obiektów
+<stdarg.h>  zmienna liczba argumentów przekazywana funkcjom
+<stdatomic.h> operacje atomowe
+<stdbit.h> porządkowanie bajtów i reprezentacje bitów 
+<stdbool.h> typy danych boolowskich
+<stddef.h> typy i makra 
+<stdint.h> typy całkowite o dokładnej szerokości 
+<stdio.h> podstawowe funkcje wejściowe i wyjściowe
+<stdlib.h> funkcje konwersji numerycznej, pseudolosowe, przydział pamięci, sterowanie procesami
+<stdnoreturn.h> funkcje niezwracające 
+<string.h> obsługa ciągu znaków
+<tgmath.h>  funkcje matematyczne o typie generycznym
+<threads.h> zarządzanie wieloma wątkami i zmiennymi warunkowymi
+<time.h> funkcje obsługi daty i czasu 
+<uchar.h> manipulowanie znakami unicode
+<wchar.h> funkcje obsługi szerokich ciągów znaków 
+<wctype.h> zestaw funkcje służacych do klasyfikowania znaków 
+
+kod źródłowy zapisany w:
+- program.c 
+
+Pliki nagłówkowe:
+- delta.h 
+
+Kod binarny: 
+-biblioteki_standardowe.lib, biblioteki_standardowe.a 
+-biblioteki_własne.obj, blblioteki_własne.o 
+
+Kod binarny dla każdego pliku źródłowego
+-binarny.obj 
+-binarny.o 
+
+Kod wykonywalny:
+-program.exe 
+
+1. Interpretacja najpierw:
+- #
+- makrodefinicje
+2. Program redukowany do jednostek leksykalnych (brak spacji, komentarzy)
+
+---------------------------------------------
+Struktura C
+---------------------------------------------
+
+Każdy program C musi posiadać funkcję main() - punkt wejściowy
+
+Moduł, część deklaracyjna:
+- import bibliotek 
+- deklaracje stałych, zmiennych 
+
+Moduł, część imperatywna: 
+- funkcje 
+
+
+int main() { return 0;} - poprawna deklaracja funkcji main 
+
+main() {return 0;} - domyślnie powinien być przyjęty int 
+void main() {} - poprawne, niezgodne z normą
+int main() {} - warning od kompilatora 
+
+można użyć <stdlib.h> do exit_success / exit_failure
+
+
+---------------------------------------------
+SŁOWA KLUCZOWE
+---------------------------------------------
+
+auto | automatyczny - automatycznie nadany typ danych 
+bool | logiczny - typ logiczny 
+break | przerwij - przerwij blok, pętle 
+case | Wariant - instrukcja konstrukcji warunkowej do switch-case 
+char | znak - typ danych, pojedynczy bajt ASCII znaku 
+const | stała - modyfikator , dodawany do deklaracji 
+continue | kontynuuj - instrukcji wróć do początku pętli programowej
+
+22
+

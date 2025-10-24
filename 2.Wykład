@@ -101,7 +101,786 @@ break | przerwij - przerwij blok, pętle
 case | Wariant - instrukcja konstrukcji warunkowej do switch-case 
 char | znak - typ danych, pojedynczy bajt ASCII znaku 
 const | stała - modyfikator , dodawany do deklaracji 
-continue | kontynuuj - instrukcji wróć do początku pętli programowej
+continue | kontynuuj - instrukcja, wróć do początku pętli programowej
+default | domyślny - etykieta, element kontrtukcji warunkowej switch-case 
+do | wykonaj - instrukcja, element instrukcji do-while 
+double | podwójny - typ danych, liczba o podwójnej długości i podójnej precyzji 
+else | jeśli nie, to - instrukcja, element instrukcji if-else-if 
+enum | wyliczeniowy  - typ danych, porządkowy 
+extern | zewnętrzny - specyfikator klasy zmiennej 
+float | zmienno-przecinkowy - typ danych 
+for | dla - instrukcja, nagłówej pętli programowej 
+goto | idź do - instrukcja, przejście do etykiety 
+if | jeśli - instrukcja, element konstukcji warunkowej if-else-if 
+int | całkowity - typ danych, liczby całkowite (2-bajtowe)
+long | długi - typ danych, liczba o powiększonej długości i precyzji 
+nullptr | brak adresu - jednoznaczna stałą wskaźnikowa brak adresu 
+register | rejestrowy - specyfikator rodzaju pamięci 
+short | krótki - liczba całkowita, krótka
+signed | ze znakiem - specyfikator danych, pierwszy bit liczby to znak +/- 
+static | statyczny - specyfikator rodzaju pamięci, zmienna statyczna 
+struct | structura - specyfikator typu danych, różne typy 
+switch | przełącz - instrukcja, element konstrukcji warunkowej switch-case 
+typedef | definiuj typ - nowy typ danych 
+typeof | odczytaj typ - instrukcja odczytuje i nadaje typ danych wg zmiennej 
+union | unia - specifkator typu danych 
+unsigned | bez znaku - specifkator tytpu danytch, tylko dodania, bez znaku 
+void | nieokreślony - specifkator typu danych
+volatile | ulotny - specifkator rodzaju zmiennej, niezauważalne nadpisanie 
+while | dopóki - słowo poprzedzjące warunek, element pętli 
 
-22
+---------------------------------------------
+Oznaczenia %
+---------------------------------------------
+
+%d, %i - liczba całkowita
+%f - liczba rzeczywista (zmiennopozycyjna)
+%s - string, łańcuch znaków
+%c - znak 
+%b - binarna 
+
+---------------------------------------------
+INSTRUKCJE
+---------------------------------------------
+
+wyrażeniowa - wyznaczenie wartości danego wyrażenia 
+złożona - blok, lista intrukcji ujęta w nawiasy {} 
+
+składowe:
+
+Dwie deklaracje w jednej funkcji:
+int i = 0, j; 
+
+Deklaracje podzielone na dwie instrukcje:
+int = 0;
+int j;
+
+
+---------------------------------------------
+Wyrażenia i operator przypisania 
+---------------------------------------------
+
+Operator to konstrukcja umożliwiająca działania: przypisania wartości:
+- arytmetryczne: +,-,*,/
+- porównawcze: >, <. >=, <=, ==, != 
+- operacji logicznych 
+- bitowych
+
+operator przypisania od prawego argumentu do lewego 
+a = b = c = 3 
+
+Skrócony zapis działań  w operatorze postaći:
++=, -=, *=, /=, %=, &=, ^=, |=, <<=, >>= 
+
+Operator unarny:
+x++; post-increment doda po odczytaniu 
+++x; pre-increment, doda przed oczytaniem
+
+char c = {}; // == 0
+float f = {}; // == 0
+int ia[5] = {}; // == [0,0,0,0,0]
+
+operator warunkowy ma postać:
+wyr_1 ? wyr_2 : wyr_3
+
+jeśli wartość jest true(różna od zera), to wynik jest wartością wyr_2, w przeciwnym wypadku wyr_3 
+
+---------------------------------------------
+Pętla
+---------------------------------------------
+
+do {
+    instrukcja
+} 
+while(wyrażenie);
+
+// najpierw instrukcja, potem wyrażenie 
+
+while(wyrazenie) {
+    instrukcja 
+}
+
+// wyrazenie, pozniej instrukcja
+
+int licznik;
+licznik 10;
+while (licznik > 0){
+    printf("\n%d...", licznik);
+    licznik--;
+}
+
+int licznik;
+for (licznik = 10; licznik > 0; licznik--) 
+printf("\n%d...", licznik);
+
+
+for( ; ; )
+{
+    klawisz = getchar();
+    if(klawisz=='T')
+    break;
+    else
+    continue;
+}
+
+---------------------------------------------
+printf()
+---------------------------------------------
+
+między znakiem a przekształceniem
+printf("obwód: %f\n", obwod);
+
+mogą wystąpić:
+- : przesuwa argument do lewego krańca jego pola 
+. : oddziela rozmiar pola dla precyzji 
+    max liczba znaków dla tekstu 
+    liczbe cyfr po kropce 
+    minimum dla całkowitej wartości 
+h - argument całkowity short 
+l - jako long 
+
+43
+
+przekształcenia dla printf() 
+
+znak    |   arg             |   dane wejściowe
+
+d,i     |   int             |   liczba całkowita dziesiętna
+o       |   int             |   liczba całkowita ósemkowa 
+x       |   int             |   liczba całkowita szesznastkowa
+u       |   unsigned int    |   liczba całkowita dziesiętna bez znaku
+c       |   char            |   jeden znak
+s       |   char            |   ciąg znaków do napotkania '\0' lub wyczerpania liczby znaków okresślonych przez precyzję
+f       |   double          |   [-]m.dddddd (precyzja - domyślnie 6 znaków)
+E,e     |   double          |   [-]m.dddddde+/-xx
+G,g     |   double          |   wpisywana w formacie %e jeśli wykładnik jest mneijszy niż -4 albo większy lub równy precyzji; w przeciwnym wypadku  wpisany w formacie %f
+p       |   void            |   wskaźnik 
+%       |                   |   nie będzie żadnego przekształcania argumentu 
+
+przekształćenia dla scanf() 
+
+znak    |   arg             |   dane wejściowe
+d       |   int             |   liczba całkowita dziesiętna
+i       |   int             |   liczba całkowita; może wystąpić w postaci ósemkowej O lub szesnastkowej 0X
+O       |   int             |   liczba całkowita ósemkowa
+u       |   unsigned int    |   liczba całkowita dziesiętna bez znaku
+x       |   int             |   liczba całkowita szesnastkowa
+c       |   char            |   znaki, domyślne 1, we wskazanej tablicy
+s       |   char            |   tekst, bez cudzysłowów, argument wskazuje na tablicę znakową o rozmiarze wystarczającym do przyjęcia tekstu z dodanym na końcu znakiem '\0'
+e f g   |   float           |   liczba zmiennpozycyjna z opcjonalnym znakiem, kropką dziesiętną i wykładnikiem
+%       |                   |   bez przypisania 
+
+---------------------------------------------
+komentarze
+---------------------------------------------
+
+// jeden wiersz 
+
+/*
+wiele wierszów
+*/
+
+---------------------------------------------
+nazwy | identyfikatory 
+---------------------------------------------
+
+nazwa - ciąg liter i cyfr oraz znaku podkreślenia 
+
+max: 32 znaki / 64 znaki 
+kompilator bierze pod wuwagę:
+31 / 63 znaki 
+
+pierwszym znakiem musi być:
+- litera 
+- _ 
+
+rozróżniana jest wielkość liter 
+
+identyfikatory rozpoczynające się od znaku pojedyńczego lub podwójnego znaku podkreślenia są stosowane przez biblioteki standardowe
+
+char znak1, _key;
+
+---------------------------------------------
+typy danych
+---------------------------------------------
+
+typy podstawowe - predefinowane i wbudowane w język C 
+typy pochodne - definiowane przez użytkowników w programie 
+
+sizeof - podaje w bajtach długość reprezentacji binarnej zmiennej na danej platformie 
+
+---------------------------------------------
+system dwójkowy 
+---------------------------------------------
+
+każda liczba dziesiętna tłumaczona jest na system dwójkowy 
+
+s - 1 bit 
+e - 8 bits 
+m - 23 bits
+
+Reprezentajca liczb zmiennoprzecinkowych:
+
+Znak (z) - sign 
+1b 
+
+Cecha (c) - wykładnik 
+8b / 11b 
+
+Mantysa (m) - liczba z przedziału 0,1 
+23b / 52b 
+
+
+pojedyncza precyzja - c 8 - m 23 - float 
+podwójna precyzja - c 11 - m 52 - double 
+
+
+typy podstawowe: 
+unsigned char   | 8 bit     | 0 - 255                           | ASCII 
+char            | 8 bit     | -128 - 127                        | małe wartości
+short int       | 16 bit    | -32 768 - 32 767                  | zmienne sterujące pętli 
+unsigned int    | 32 bit    | 0 - 4 294 967 295                 | -||- 
+int             | 32 bit    | -2 147 483 648 - 2 147 483 647    | -||-
+unsigned long   | 32 bit    |                                   | odległości astronomiczne 
+enum            | 32 bit    |                                   | uporządkowane zbiory wartości 
+long            | 32 bit    |                                   | liczność populacji 
+float           | 32 bit    |                                   | obliczenia naukowe do 7 cyfr dokładności 
+double          | 64 bit    |                                   | obliczenia naukowe z dokładnością 15 cyfr 
+long double     | 80 bit    |                                   | obliczenia naukowe z dokładnością 18 cyfr 
+
+2 <= sizeof (short <= sizeof (int)
+
+---------------------------------------------
+typ boolean
+---------------------------------------------
+
+typ danych logiczny:
+
+Prawda/true/1
+Fałśz/false/0
+
+_Bool - int - 0,1;
+
+---------------------------------------------
+typ void 
+---------------------------------------------
+
+pusta informacja 
+- nie można wykorzystać ani przekształcić do innego typu 
+- używane gdzie wartość nie jest używana 
+
+np. funkcja nie zwraca wyniku 
+np. funkcja nie pobiera argumentów 
+np. wskaźniki na dane nieokreślonego typu 
+
+void komunikat(char *kom) {}
+int init(void) { return 1; }
+
+C23 - auto - wnioskuje typ zmiennej 
+
+---------------------------------------------
+Przekształcenia
+---------------------------------------------
+
+Przekształcenie typów 
+typeof (a) b = a;                   // b ma teraz odczytany typ z a
+typeof_unqual(const int) c = 7;     // usuwa const, nadaje int
+
+rzutowanie jawne
+rzutowanie niejawne 
+
+int main(void)
+{
+    int i=2, j=1;
+    float f;
+    f ((float) j / (float) i);  // jawne - instrukcja 
+    j = f // niejawne - kompilator 
+    return(0);
+}
+
+typ może reprezentować wszystkie wartośći oryginalnego typu (promocja typu int)
+(char, short, signed char, unsigned char)
+
+w innych wypadkach to typ unsigned int 
+int > unsigned > long > unsigned long > float > double > long double 
+
+void main() {
+    char ch = 'A';
+    ch+=10;
+    printf("ch = %c", ch);  
+}
+
+Jeśli przy przekształceniu wartośći zmiennopozycyjnej do typu zmiennopozycyjnego o mniejszej precyzji zawiera się ona w reprecentowalnym przedziale, wynikiem jest najbliższa większa albo mniejsza reprezentowalna wartość 
+float f; double d; f=d // niejawne przekształcenie 
+
+Przy przekształcaniu wartości typu zmiennopozycyjnego do typu całkowitego gubvi się jej część ułamkową 
+
+int k;
+float f;
+f=1.5;
+k=f; //k=1 
+
+Jeśli podczas obliczania wartości wyrażenia "x operator y" wystepuje niezgodnosć trypó, to następuje automatyczna ich konwersja.
+
+Przekształcenia argumentów  według zasady: z mniejszej do większej precyzji 
+char > int > long > float > double
+
+int a=2; 
+float r;
+r = a + 2.5; // przekształcenie do float 
+
+int a=1, b=2, c=3, d;
+float x=1.0,y; 
+
+d = a/b; // int - 0 
+d = a/b*c // 0
+d = c*a/b; // 1
+d = x/b*c // float > int > wynik  1.0 / 2 = 0.5 * 3 = 1.5 = 1
+
+---------------------------------------------
+ZMIENNE
+---------------------------------------------
+
+Stos - stack -  obszar pamięci, który zostaje automatycznie przydzielony do wyhkorzystania dla programu 
+
+Na stosie przechowywane są 
+- automatyczne zmienne lokalne 
+- arugmenty wywołania funkcji 
+- wartość zwracana przez funkcję 
+- adres wytwołania funkcji 
+
+rozmiar stosu ustalany jest raz podczas kompilacji programu i nie zmienia się w trakcie jego działania 
+
+Sterta - heap - to cała pamięć przydzielana do wykorzystania przez program podczas jego działania - na wszystkie dane, jakie musi przetwarzać dynamicznie
+Kontrolą pamięci sterty zajmuje się program i programista, który może przydzielać odpowiednią jej ilość dynamicznie podczas działania programu  
+
+OS KERNEL SPACE >> STACK (automatic variables, local to function`s scope) 
+TEXT, DATA, BSS >> HEAP (dynamic memory allocation)
+
+
+Zmienna jest nazywanym miejscem w pamięci, w którym przechowywana jest wartosć zgodna z określonym dla niej i znanym kompilatorowi typem 
+
+Nazwa zmiennej w kodzie źródłowym programu staje się po wczytaniu kodu binarnego programu konkretnym adresem miejsca w pamięci 
+
+- łatwiej posługiwać sięnazwą niż adresem wyrażonym liczbą, imie - 0x12342
+
+Kompilator/loader dokonując translacji/uruchomienia programu: 
+- zamienia nazwy zmiennych na adresy w pamięci 
+- rezerwuje na zmienną odpowiednią ilość pamięci 
+
+Ilość pamięci musi wystarczyć na porzechowanie każdej poprawnej wartości zmiennej określonego typu ("dziedziny")
+
+Podstawowe cechy zmiennej: 
+
+Interpretacja zmiennej opiera się na dwóch podstawowych atrybutach:
+- typie (dziedzina wartości) - nadaje znaczenia wartości zmiennej
+- rodzaju (klasy) pamięci - decyduje o żywotnośći zmiennej 
+
+-- automatyczna: auto;
+-- statyczna: static; 
+
+Podstawowe cechy zmiennej to: 
+-zasięg (część programu, w której zmienna jest rozpoznawana)
+-łączność (określa, czy taka sama nazwa z innym zasięgiem odnosi się do tej samej zmiennej)
+
+Ze zmienna mogą być związane kwalifikatory (modifikatory):
+- const - zmienna nie będzie zmieniała wartości, stała 
+- volatile - zmienna nie będzie podlegałą optymalizacji w kompilatorze 
+
+Wszystkie występujące zmienne w programie muszą być przed ich pierwszym użyciem zadeklarowane 
+
+C89 - na samym początku 
+C99 - w dowolnym miejscu programu, deklaracja przed użyciem 
+
+---------- Zmienne rodzaje ---------------
+
+deklaracje zawarte w bloku tworzą zmienne automatyczne jeśli nie podano klasy pamięci lub użyto specifikatora auto 
+- automatyczne umieszane są na stosie 
+- zmienne takie są usuwane, gdy sterowanie opuści blok 
+
+zmienne zadeklarowane jako register są także automatyczne, ale umieszane w szybkich rejestrach 
+{
+    int i; // auto 
+    auto int a;
+    register int b; // zmienna register 
+}
+
+Zmienne globalne - są dostępne w każdym meijscu programu, deklaruje sie się przed wszystkimi funkcjami programu, w tym przed main() 
+jeśli programista teego nie zrobi są inicjalizowane wartością 0 
+
+int y = 21; // widoczna zmienna globalna w każdym module programu 
+int z; // wartosc 0 
+static int x; // widoczna tylko w jednym module, prywatna 
+
+int main(){
+    return 0;
+}
+w innym pliku trzeba użyć: extern inti y;
+
+
+
+-----------------Zasięgi---------------------
+
+Zmienne, które deklaruje się lokalnie w bloku instrukcji {}, są zmiennymi lokalnymi 
+
+Zmienna lokalna przykrywa zmienną globalną o tej samej nazwie 
+
+Zasięg widoczności zmiennej lokalnej ograniczają najbliższe nawiasy 
+
+int main() {
+    int x; 
+    auto int y = 5;
+    if (x>0){
+        float y = 10.0; // lokalna definicja 
+    } // zamknięcie bloku, y jest usuwana 
+    return 0;
+}
+
+--------------------Zmienne statyczne--------
+
+Mogą być lokalne dla bloku lub zewnętrzne dla wszystkich bloków; w każdym przypadku zachowują swoje wartości po po opuszczeniu i ponownym wejściu do bloku. Wewnątrz bloku zmienne statyczne deklaruje się za pomocą słowa static 
+
+Zmienne zadeklarowane na zewnątrzz wszystkich bloków, sązawsze statyczne 
+
+#include <stdio.h>
+void funkcja(){
+    int a = 10;
+    static int sa = 10;
+    a = a+5; // 15
+    sa = sa+5 // 15
+}
+void main() {
+    int i;
+    for (i=0; i<5; ++i)
+        funkcja();
+}
+
+a 15 - sa 15
+a 15 sa 20
+
+---------------------------------------------
+Stałe
+---------------------------------------------
+
+5 rodzajów stałych: (stałych wartości)
+
+1. Całkowite 
+2. Zmiennopozycyjne
+3. Znakowe 
+4. Tekstowe 
+5. WYLICZENIOWE 
+
+-----------Całkowite-------------------------
+
+Constants
+-Numeric Constant
+|-- Integer constant 
+|-- Real constant 
+- Character constant 
+|-- Single character conmstant 
+|-- String constant 
+
+Stałe całkowite można zapisywać w postaci:
+- dziesiętnej 0-9
+- ósemkowej 0,1,7.. ciąg zaczyna się od zera
+- szesnastkowej, 0,1,9 i A,B,C, ale rozpoczyna się od 0X (cyfra zero i znak X)
+
+ Stała całkowita może być opatrzona przedrostkiem U do oznaczenia, że jest be znaku(unsigned)
+
+ 123 // 10
+ 1L // long - długa 
+ U5 // bez znaku, usgined 
+ 013 // 8
+ 0X13 // 16
+
+---------------------Znakowe-----------------
+
+Stała znakowa skłąda się z jednego znaku w apostrofach 'x'
+Stałe znakowe nie zawierają apostrofów (') i znaków nowego wiersza 
+Sekwencje specjalne (manipulatory) 
+
+CYFRY
+0 - 48
+1 - 49 
+
+DUŻE LITERY 
+A - 65
+B - 66
+
+MAŁE LITERY 
+a - 97
+b - 98
+
+
+-------------Sekwencje specjalne-------------
+
+\b - Backspace - cofnięcie - BS 
+\f - Form Feed - nowa strona - FF
+\n - New Line - nowa linia - NL 
+\r - Carriage return - powrót karetki - CR 
+\t - tabulator - HT 
+\v - vertical tabulator - VT 
+\p - adres 
+\a - alarm  - BEL 
+\0 - null 
+\\ - ukośnik w lewo 
+\\ - znak zapytania > 
+\' - apostrof 
+\" - cudzysłów 
+\0oo - stała ósemkowa 
+\Xhh - stała szesnastkowa 
+
+
+------Stałe zmiennopozycyjne----------------
+
+- część całkowita
+- kropka 
+- część ułamkowa 
+- opcjonalnie litery e(wykładnik potęgi)
+- opcjonalnie przyrostka (F-float, L-long)
+
+1.2; 88.5L; 1.0e-3;
+
+-------Stałe wyliczeniowe------------------
+
+Nazwy wyliczeniowe enum są stałymi typu int - enumeration constant 
+enum dni {pn,wt,sr,cz,pi,so,ni}
+
+Pierwszy element na liście ma wartość 0, następny wartość 1 itd. Chyba, że przy nazwie wystąpi jawnie wartość elementu 
+enum pojazd {moto, tramwaj,autobus=5}
+
+-----------------Stała napisowa------------
+
+ciąg znaków ujęty w znaki cudzysłowiu "to jest"
+typ: tablica znakowa 
+klasa pamięci: static 
+
+do końca napisu jest dopisywany znak \0, aby progrfam przeglądający teskt mógł znależć jego koniec
+
+---------------------------------------------
+OPERATORY 
+---------------------------------------------
+
+() - ogranicza wyrażenia, izoluje wyrażenia warunkowe, wskazuje na wywołanie funkcji 
+[] - wskazuje na indeks, wymiar macierzy 
+. - odwołąnie do elementu 
+-> - wskazanie elementu struktury 
+:: - widoczność, scope
+! - operator negacji logicznej 
+~ - operator dopełnienia jedynkowego, negacja bitowa 
+- - jednoargumentowy minus 
++ - jedno argumentowy plus
+++ - pre-inkrementacja 
+++ - post-inkrementacja 
+& - operator adresu 
+* - adresowanie pośrednie 
+sizeof - operator sizeof 
+* - mnożenie 
+/ - dzielenie
+% - modulo
++ - dodawanie
+- - odejmowanie
+<< - przesunięcie bitowe w lewo 
+>> - przesunięcie bitowe w prawo 
+< - mnijsze niż 
+> - większe niż 
+<= - mniejsze lub równe 
+>= - większe lub równe
+== - równe 
+!= - nierówne 
+& - bitowy operator AND koniunkcja 
+^ - bitowy operator różnica symetryczna XOR 
+| - bitowy operator alternatywy OR
+&& - logiczne AND 
+|| - suma logiczna OR 
+? : - operator warunkowy 
+= - operator przypisania 
++=,-=,*=,/=,%=,>>=,<<= 
+, - odzielenie argumentów funkcji 
+
+---------------------------------------------
+WYRAŻENIA PRZYROSTKOWE 
+---------------------------------------------
+
+Odwołanie do tablic int x[3] = {1,2,3}
+Wywołanie funkcji 
+Odwołanie do klas i struktur 
+Zwiększanie i zmniejszenie przyrostkowe 
+
+Operatory w wyrażeniach przyrostkowych są lewostronnie łączne 
+
+Użyty po wyrażeniu przyrostkowym operator ++ lub -- powoduje odpowiednio, zwiększenie lub zmniejszenie wartości argumentu o jeden;
+
+x++, x--, ++x, --x
+
+int x,y = 10;
+x = y++ *3;   y=11 after 
+print("%d",x) // 30
+
+---------------------------------------------
+OPERATORY JEDNOARGUMENTOWE 
+---------------------------------------------
+
+Operatory jednoargumentowe są prawostronnie łączne 
+++, --, &, *, +, -, ~, !, sizeof 
+
+Operator & - podaje adres swojego argumentu 
+wynikiem jest wskaźnik do zmiennej lub funkcji 
+
+Operator * - oznacza adresowanie pośrednie i daje w wyniku zmienną lub funkcję wskazywaną przez argument 
+
+jeśli typem argumentu jest wskaźnik do typu T, to typem wyniku jest T 
+
+
+---------------------------------------------
+PAMIĘĆ KOMPUTERA 
+---------------------------------------------
+
+komórka pamięci - 8 bit (1 byte) = 00000000 -  byte bo 8 bitów 
+
+2 bytes - int 
+4 bytes - char 
+4 bytes - int* (wskaźnik)
+8 bytes - float 
+
+---------------------------------------------
+PODSTAWY TYPÓW WSKAŹNIKOWYCH
+---------------------------------------------
+
+wskaźnik to specjalny typ danych 
+
+zmienna typu wskaźnikowego przechowuje adres do innej zmiennej w pamięci programu 
+
+tak jak inne zmienne, należy go zadeklarować oraz zainicjalizować przed pierwszym użyciem  null / nullptr 
+
+wskaźniki mająokreślonąspecjalną arytmetykę, dzięki której można w stosunkowo łatwy sposób operatować na adresach w pamięci operacyjnej 
+
+Unarny jednoargumentowy operator * - oznacza adresowanie i daje w wyniku zmienną lub funkcję wskazywaną przez argument 
+
+---------------------------------------------
+OPERATOR ADRESU
+---------------------------------------------
+
+Jednoargumentowy operator (&) Podaje adres swojego argumentu 
+
+Operator * - jest operatorem odwrotnym do & 
+x = *&y == x = y
+
+---------------------------------------------
+OPERATOR DOPEŁNIENIA JEDYNKOWEGO
+---------------------------------------------
+
+~ - typ całkowity jest argumentem 
+Wynikiem jest dopełnienie jedynkowe wartości argumentu;
+promowany jest typ całkowity 
+
+int main(){
+    int x = -1;
+    int y = ~0;
+} // ta sama wartość 
+
+---------------------------------------------
+OPERATOR NEGACJI LOGICZNEJ 
+---------------------------------------------
+
+! - argumentem jest typ całkowity lub wskaźnikowy.
+Wynikiem jest 1 jeśli wartość argumentu jest 0, 
+
+int*wsk,x=0; 
+printf("!x=%x\n",!x); \\ 1
+printf("!wsk=%x",!wsk); \\ 1
+
+---------------------------------------------
+OPERATORY MULTIPLIKATYWNE
+---------------------------------------------
+
+Operatory multiplikatywne:
+- mnożenia (*)
+- dzielenia (/)
+- modulo (%)
+
+Argumenty wszystkich operatorów muszą być arytmetyczne; 
+argumenty operatora % muszą być całkowite 
+
+---------------------------------------------
+OPERATORY ADDYTYWNE
+---------------------------------------------
+
+Operatory addytywne:
+- dodawania (+)
+- odejmowania (-)
+
+są lewostronnie łączne 
+
+---------------------------------------------
+OPERATORY PRZESUNIĘCIA 
+---------------------------------------------
+
+<<, >> są lewostronnie łącznie 
+ich argumenty muszą być całkowite i podlegają promocji typui całkowitego
+
+Wynik nie jest zdefiniowany, jeśli prawy argument jest ujemny, a także jeśli jest większy lub równy liczbie bitów w typie lewego argumentu;
+
+Wartością E1<<E2 jest E1 przesunięte w lewo o E2 bitów, co jest równoważne pomnożenie przez E1 przez 2^E2
+
+Wartością E1>>E2 jest E1 przesunięte w prawo o E2 bitów, co jest równoważne podzieleniu E1 przez 2^E2
+
+---------------------------------------------
+OPERATORY RELACJI 
+---------------------------------------------
+
+<,>,>=,<= 
+
+dają 1 wartość jeśli relacja jest prawdziwa 
+dają 0 wartość jeśli jest fałszywa 
+
+---------------------------------------------
+OPERATORY PORÓWNANIA
+---------------------------------------------
+
+== równe 
+!= nierówne 
+
+---------------------------------------------
+BITOWY OPERATOR KONIUNKCJI AND 
+---------------------------------------------
+
+Bitowy operator koniunkcji & daje w wyniku bitową koniunkcję argumentów
+Operator odnosi się do argumentów całkowitych 
+
+m   0000 1111 0001 1111
+k   0000 1111 1111 0000
+m&k 0000 1111 0000 0000
+
+---------------------------------------------
+BITOWY OPERATOR RÓŻNICY SYMETRYCZNEJ XOR
+---------------------------------------------
+Bitowy operator różnicy symetrycznej ^ daje w wyniku bitową różnicę symetryczną argumentów 
+
+m   0000 1111 0000 1111
+k   0000 1111 1111 0000
+m^k 0000 0000 1111 1111 
+
+---------------------------------------------
+BITOWY ALTERNATYWY OR 
+---------------------------------------------
+
+Bitowy operator alternatywy | daje w wyniku bitową alternatywę argumentów
+Operator odnosi się do argumentów całkowitych 
+
+m   0000 1111 0000 1111
+k   0000 1111 1111 0000
+m|k 0000 1111 1111 1111
+
+---------------------------------------------
+TYPY POCHODNE  
+---------------------------------------------
+
+nieskończona klasa typów pochodnych z typów podstawowych 
+
+- TABLICE - złożone ze zmiennych danego typu 
+- FUNKCJE - zwracające wartości danego typu 
+- WSKAŹNIKI - do zmiennej danego typu
+- STRUKTURY - zawierające zestawy zmiennych różnych typów 
+- UNIE - zawierające dowolny z zestawu zmiennych o różnych typach
 
